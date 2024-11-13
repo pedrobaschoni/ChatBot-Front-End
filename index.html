@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbox com Barra Lateral</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <button id="toggleButton">&#9776;</button>
+            <div class="sidebar-content">
+                <h2>Usuários</h2>
+                <ul id="userList">
+
+                </ul>
+                <button id="addUserButton">Novo Chat</button>
+            </div>
+            <div class="fixed-buttons">
+                <button id="renameUserButton" title="Renomear">✏️</button>
+                <button id="deleteUserButton" title="Excluir">🗑️</button>
+                <button id="themeToggleButton">
+                    <span class="icon-moon" title="Modo Escuro">🌙</span>
+                    <span class="icon-sun" title="Modo Claro">☀️</span>
+                </button>
+            </div>
+        </div>
+        <div class="chat-container">
+            <div class="chat-header">Chat <span id="activeUser"></span></div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Digite sua mensagem...">
+                <button id="sendButton">Enviar</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+* {
+    box-sizing: border-box; /* Garante que padding e border não afetem o tamanho total dos elementos */
+}
+
+body, html {
+    margin: 0; /* Remove a margem padrão */
+    padding: 0; /* Remove o padding padrão */
+    height: 100%; /* Define a altura total para o body e html */
+    font-family: 'Arial', sans-serif; /* Define a fonte padrão */
+    background-color: #e9ecef; /* Cor de fundo padrão (modo claro) */
+    color: #343a40; /* Cor do texto padrão (modo claro) */
+    transition: background-color 0.3s, color 0.3s; /* Suaviza a transição entre os modos */
+}
+
+/* Estilos para o modo escuro */
+body.dark-mode {
+    background-color: #121212; /* Cor de fundo do modo escuro */
+    color: #e9ecef; /* Cor do texto no modo escuro */
+}
+
+.container {
+    display: flex; /* Usa flexbox para layout */
+    height: 100%; /* Altura total para o container */
+}
+
+.sidebar {
+    width: 250px; /* Largura da barra lateral */
+    background-color: #343a40; /* Cor da barra lateral no modo claro */
+    color: white; /* Cor do texto na barra lateral */
+    padding: 15px; /* Espaçamento interno */
+    border-right: 1px solid #ddd; /* Borda direita para a barra lateral */
+    transition: width 0.3s; /* Suaviza a transição da largura */
+    position: relative; /* Para posicionamento absoluto de elementos internos */
+}
+
+body.dark-mode .sidebar {
+    background-color: #212121; /* Barra lateral no modo escuro */
+}
+
+.sidebar.collapsed {
+    width: 50px; /* Largura da barra lateral quando colapsada */
+}
+
+.sidebar-content {
+    transition: opacity 0.3s, visibility 0.3s; /* Suaviza a transição de opacidade e visibilidade */
+}
+
+.sidebar.collapsed .sidebar-content {
+    opacity: 0; /* Esconde o conteúdo quando a barra lateral está colapsada */
+    visibility: hidden; /* Oculta o conteúdo */
+}
+
+.sidebar h2 {
+    margin: 0 0 15px; /* Margem inferior para o título */
+    font-size: 1.5em; /* Tamanho da fonte do título */
+}
+
+#userList {
+    list-style: none; /* Remove os marcadores da lista */
+    padding: 0; /* Remove o padding da lista */
+}
+
+#userList li {
+    padding: 8px 0; /* Espaçamento interno para os itens da lista */
+    border-bottom: 1px solid #495057; /* Borda inferior para separar os itens */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.3s; /* Suaviza a transição da cor de fundo */
+    display: flex; /* Exibe os itens da lista como flexbox */
+    align-items: center; /* Alinha os itens no centro verticalmente */
+}
+
+#userList li:hover {
+    background-color: #495057; /* Cor de fundo ao passar o mouse sobre os itens da lista */
+}
+
+#userList li button {
+    background: none; /* Remove o fundo do botão */
+    border: none; /* Remove a borda do botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    font-size: 16px; /* Tamanho da fonte do botão */
+    margin-left: 5px; /* Margem esquerda do botão */
+    padding: 0; /* Remove o padding do botão */
+    color: #007bff; /* Cor do texto do botão */
+}
+
+#userList li button:hover {
+    color: #0056b3; /* Cor ao passar o mouse sobre o botão */
+}
+
+.chat-container {
+    flex: 1; /* Faz com que o container de chat ocupe o espaço restante */
+    display: flex; /* Usa flexbox para layout */
+    flex-direction: column; /* Organiza os elementos em coluna */
+}
+
+.chat-header {
+    background-color: #007bff; /* Cor de fundo do cabeçalho do chat */
+    color: white; /* Cor do texto do cabeçalho do chat */
+    padding: 15px; /* Espaçamento interno do cabeçalho */
+    text-align: center; /* Centraliza o texto */
+    font-size: 1.5em; /* Tamanho da fonte do cabeçalho */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para o cabeçalho */
+}
+
+body.dark-mode .chat-header {
+    background-color: #007bff; /* Cor do cabeçalho do chat no modo escuro */
+}
+
+.chat-messages {
+    flex: 1; /* Faz com que o container de mensagens ocupe o espaço restante */
+    padding: 10px; /* Espaçamento interno */
+    overflow-y: auto; /* Permite rolagem vertical */
+    border-bottom: 1px solid #ddd; /* Borda inferior para o container de mensagens */
+    background-color: #f8f9fa; /* Cor de fundo das mensagens no modo claro */
+}
+
+body.dark-mode .chat-messages {
+    background-color: #2a2a2a; /* Cor de fundo das mensagens no modo escuro */
+}
+
+.chat-messages p {
+    margin: 5px 0; /* Margem para os parágrafos dentro de mensagens */
+    padding: 10px; /* Espaçamento interno das mensagens */
+    border-radius: 5px; /* Bordas arredondadas para as mensagens */
+    background-color: #e2e6ea; /* Cor de fundo das mensagens no modo claro */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra para as mensagens */
+}
+
+body.dark-mode .chat-messages p {
+    background-color: #444; /* Fundo das mensagens no modo escuro */
+}
+
+.chat-input {
+    display: flex; /* Usa flexbox para layout */
+    padding: 10px; /* Espaçamento interno */
+    border-top: 1px solid #ddd; /* Borda superior para o input */
+    background-color: #ffffff; /* Cor de fundo do input no modo claro */
+}
+
+body.dark-mode .chat-input {
+    background-color: #333; /* Cor da entrada de mensagens no modo escuro */
+}
+
+input[type="text"] {
+    flex: 1; /* Faz com que o input ocupe o espaço restante */
+    padding: 10px; /* Espaçamento interno do input */
+    border: 1px solid #ced4da; /* Borda do input */
+    border-radius: 5px; /* Bordas arredondadas para o input */
+    margin-right: 10px; /* Margem direita do input */
+    font-size: 1em; /* Tamanho da fonte do input */
+}
+
+body.dark-mode input[type="text"] {
+    background-color: #555; /* Cor de fundo do campo de texto no modo escuro */
+    color: #fff; /* Cor do texto no input no modo escuro */
+    border-color: #777; /* Cor da borda do input no modo escuro */
+}
+
+button {
+    padding: 10px; /* Espaçamento interno do botão */
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    border: none; /* Remove a borda do botão */
+    border-radius: 5px; /* Bordas arredondadas para o botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    font-size: 1em; /* Tamanho da fonte do botão */
+    transition: background-color 0.3s; /* Suaviza a transição da cor de fundo */
+}
+
+button:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse sobre o botão */
+}
+
+body.dark-mode button {
+    background-color: #007bff; /* Cor dos botões no modo escuro */
+}
+
+body.dark-mode button:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse no modo escuro */
+}
+
+#toggleButton {
+    background: none; /* Remove o fundo do botão */
+    border: none; /* Remove a borda do botão */
+    color: white; /* Cor do ícone do botão */
+    font-size: 24px; /* Tamanho do ícone */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    position: absolute; /* Coloca o ícone em posição absoluta */
+    top: 15px; /* Distância do topo */
+    right: 15px; /* Distância do lado direito */
+    transition: all 0.3s ease; /* Transição suave para todos os efeitos */
+}
+
+/* Quando a barra lateral estiver recolhida, o ícone é centralizado */
+.sidebar.collapsed #toggleButton {
+    right: 50%; /* Posiciona o ícone no meio da barra lateral */
+    transform: translateX(50%); /* Ajusta o ícone para ficar completamente centralizado */
+    font-size: 30px; /* Aumenta o tamanho do ícone */
+}
+
+/* Efeito de hover: quando o mouse passa sobre o ícone */
+#toggleButton:hover {
+    color: #28a745; /* Cor verde ao passar o mouse sobre o ícone */
+    transition: color 0.3s ease; /* Transição suave para a cor ao passar o mouse */
+}
+
+/* Estilos para os botões fixos */
+.fixed-buttons {
+    position: absolute; /* Posicionamento absoluto em relação ao container pai */
+    bottom: 20px; /* Distância do fundo */
+    left: 10px; /* Distância da esquerda */
+    display: flex; /* Usa flexbox para layout */
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+.fixed-buttons button {
+    background: none; /* Remove o fundo do botão */
+    border: 2px solid transparent; /* Começa com borda transparente */
+    border-radius: 50%; /* Torna a borda arredondada */
+    font-size: 20px; /* Tamanho da fonte do botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    color: #007bff; /* Cor do ícone do botão */
+    padding: 8px; /* Espaçamento interno do botão */
+    transition: all 0.3s ease; /* Suaviza a transição para todos os efeitos */
+}
+
+/* Quando no modo escuro, todos os botões (incluindo o do sol) ganham borda visível */
+body.dark-mode .fixed-buttons button {
+    color: #ccc; /* Cor dos ícones dos botões no modo escuro */
+    border: 2px solid #ccc; /* Borda visível para todos os botões no modo escuro */
+    background-color: #444; /* Cor de fundo dos botões no modo escuro */
+}
+
+/* Adicionar efeito de hover nos botões fixos */
+body.dark-mode .fixed-buttons button:hover {
+    background-color: #444; /* Cor de fundo ao passar o mouse no modo escuro */
+    color: #fff; /* Cor do ícone ao passar o mouse no modo escuro */
+    border: 2px solid #fff; /* Borda branca ao passar o mouse no modo escuro */
+}
+
+/* Para o ícone de alternância de tema (lua/sol) */
+#themeToggleButton {
+    background: none; /* Remove o fundo do botão de alternância */
+    border: 2px solid transparent; /* Borda transparente inicialmente */
+    border-radius: 50%; /* Torna o ícone arredondado */
+    font-size: 24px; /* Tamanho do ícone de alternância */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    color: #007bff; /* Cor do ícone de alternância */
+    transition: all 0.3s ease; /* Suaviza a transição para todos os efeitos */
+}
+
+/* Quando no modo escuro, o botão de alternância de tema (sol/lua) ganha borda visível */
+body.dark-mode #themeToggleButton {
+    color: #ccc; /* Cor do ícone de sol no modo escuro */
+    border: 2px solid #ccc; /* Borda visível ao redor do ícone no modo escuro */
+    background-color: #444; /* Cor de fundo do botão de alternância no modo escuro */
+}
+
+/* Efeito de hover para o botão de alternância de tema */
+#themeToggleButton:hover {
+    border: 2px solid #fff; /* Borda branca ao passar o mouse */
+    color: #fff; /* Muda a cor para branco ao passar o mouse */
+    background-color: #444; /* Cor de fundo quando o mouse está sobre o botão de tema */
+    transform: scale(1.1); /* Aumenta ligeiramente o ícone de tema */
+    transition: all 0.3s ease; /* Suaviza a transição para todos os efeitos */
+}
+
+#deleteUserButton:hover {
+    border: 2px solid #e20f0f; /* Borda branca ao passar o mouse */
+}
+
+.no-chats-message {
+    color: #dc3545; /* Cor da mensagem quando não há chats */
+    font-size: 1.2em; /* Tamanho da fonte da mensagem */
+    text-align: center; /* Centraliza o texto da mensagem */
+    padding: 20px; /* Espaçamento interno da mensagem */
+}
+
+body.dark-mode .no-chats-message {
+    color: #ff4444; /* Cor da mensagem de chat no modo escuro */
+}
+
+/* Efeito de hover para os botões fixos */
+.fixed-buttons button:hover {
+    background-color: #444; /* Cor de fundo ao passar o mouse sobre o botão */
+    color: #fff; /* Cor do ícone ao passar o mouse sobre o botão */
+    border: 2px solid #fff; /* Borda branca ao passar o mouse */
+    transform: scale(1.1); /* Aumenta ligeiramente o ícone ao passar o mouse */
+    transition: all 0.3s ease; /* Suaviza a transição para todos os efeitos */
+}
+
+/* Para o ícone de sol */
+.icon-sun {
+    display: none; /* Esconde o ícone do sol por padrão */
+}
+
+/* Para o modo claro */
+body:not(.dark-mode) .icon-sun {
+    display: none; /* Esconde o ícone do sol no modo claro */
+}
+
+body:not(.dark-mode) .icon-moon {
+    display: inline; /* Mostra o ícone da lua no modo claro */
+}
+
+body.dark-mode .icon-moon {
+    display: none; /* Esconde o ícone da lua no modo escuro */
+}
+
+body.dark-mode .icon-sun {
+    display: inline; /* Mostra o ícone do sol no modo escuro */
+}
+
+/* Ocultar ícones na barra lateral colapsada */
+.fixed-buttons {
+    display: flex; /* Certifique-se que os botões estejam em linha */
+}
+
+.fixed-buttons.hidden {
+    display: none; /* Oculta os botões */
+}
+
+/* Estilo para o usuário ativo na barra lateral */
+#userList li.active-user {
+    background-color: #007bff; /* Cor de fundo azul */
+    color: white; /* Cor do texto no item ativo */
+    font-weight: bold; /* Deixa o texto em negrito */
+}
+
+/* Alterar o comportamento ao passar o mouse sobre o usuário ativo */
+#userList li.active-user:hover {
+    background-color: #0056b3; /* Cor de fundo quando passar o mouse */
+    color: white; /* Mantém o texto branco */
+}
